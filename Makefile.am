@@ -4,8 +4,8 @@
 VERSION_INFO = -version-info $(SONAME_CURRENT):$(SONAME_REVISION):$(SONAME_AGE)
 ACLOCAL_AMFLAGS = -I m4
 
-CFLAGS = -I@opensshdir@ -Wall -Wextra -Werror -Wno-attributes -Wno-unused-parameter -Wformat-security -O2 -D_FORTIFY_SOURCE=2 -fPIE -Wa,--noexecstack
-LDFLAGS = -pie -Wl,-z,relro,-z,now
+CFLAGS = -I@opensshdir@ -Wall -Wextra -Werror -Wno-attributes -Wno-unused-parameter -Wformat-security -D_FORTIFY_SOURCE=2 -fPIE -Wa,--noexecstack @CFLAGS@
+LDFLAGS = -pie -Wl,-z,relro,-z,now @LDFLAGS@
 ARFLAGS = cr
 
 include_HEADERS = hiba.h extensions.h errors.h checks.h certificates.h revocations.h
@@ -23,15 +23,15 @@ sbin_PROGRAMS = hiba-chk hiba-gen hiba-grl
 
 hiba_chk_SOURCES = hiba-chk.c util.c
 hiba_chk_LDADD = -L@opensshdir@ -L@opensshdir@/openbsd-compat -L. -lhiba -lssh -lopenbsd-compat -lcrypto
-hiba_chk_DEPENDENCIES = libhiba.a
+hiba_chk_DEPENDENCIES = libhiba.la
 
 hiba_gen_SOURCES = hiba-gen.c util.c
 hiba_gen_LDADD = -L@opensshdir@ -L@opensshdir@/openbsd-compat -L. -lhiba -lssh -lopenbsd-compat -lcrypto
-hiba_gen_DEPENDENCIES = libhiba.a
+hiba_gen_DEPENDENCIES = libhiba.la
 
 hiba_grl_SOURCES = hiba-grl.c util.c
 hiba_grl_LDADD = -L@opensshdir@ -L@opensshdir@/openbsd-compat -L. -lhiba -lssh -lopenbsd-compat -lcrypto
-hiba_grl_DEPENDENCIES = libhiba.a
+hiba_grl_DEPENDENCIES = libhiba.la
 
 dist_sbin_SCRIPTS = hiba-ca.sh
 
