@@ -12,13 +12,14 @@
 
 #include "certificates.h"
 #include "extensions.h"
+#include "revocations.h"
 
 struct hibaenv;
 
 /* Check whether the grant extension authorized access to the target
  * environment. */
 int hibachk_authorize(const struct hibaenv *env, const struct hibaext *grant,
-                      const char *role);
+                      u_int32_t id, const char *role);
 
 /* Output the dynamically generated authorized_users.
  * The output will be generated for the 'idx'th grant of the given 'cert'
@@ -29,7 +30,7 @@ void hibachk_authorized_users(const struct hibaenv *env,
 /* Create an environment from a host certificate with a HIBA identity grant
  * Resulting struct hibaenv must be released using hibaenv_free().
  * The grl parameter is currently unused and ignored. */
-struct hibaenv *hibaenv_from_host(const struct hibacert *host, const char *grl);
+struct hibaenv *hibaenv_from_host(const struct hibacert *host, const struct hibagrl *grl);
 
 /* Destructor for hibaenv. */
 void hibaenv_free(struct hibaenv *env);
