@@ -8,14 +8,14 @@ CFLAGS = -I@opensshdir@ -Wall -Wextra -Werror -Wno-attributes -Wno-unused-parame
 LDFLAGS = -pie -Wl,-z,relro,-z,now
 ARFLAGS = cr
 
-include_HEADERS = hiba.h extensions.h errors.h checks.h certificates.h
+include_HEADERS = hiba.h extensions.h errors.h checks.h certificates.h revocations.h
 
 lib_LIBRARIES = libhiba.a
-libhiba_a_SOURCES = extensions.c errors.c checks.c certificates.c
+libhiba_a_SOURCES = extensions.c errors.c checks.c certificates.c revocations.c
 libhiba_a_LIBADD =
 
 lib_LTLIBRARIES = libhiba.la
-libhiba_la_SOURCES = extensions.c errors.c checks.c certificates.c
+libhiba_la_SOURCES = extensions.c errors.c checks.c certificates.c revocations.c
 libhiba_la_CFLAGS =
 libhiba_la_LDFLAGS = $(VERSION_INFO)
 
