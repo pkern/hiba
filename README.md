@@ -66,7 +66,8 @@ HIBA relies on a few properties provided by OpenSSH:
 ### GRL (Grant Revocation List)
 
 HIBA allows revoking individual grants rather than the whole certificate. See
-[PROTOCOL.grl](PROTOCOL.grl) for more information.
+[PROTOCOL.grl](https://github.com/google/hiba/blob/main/PROTOCOL.grl) for more
+information.
 
 Note: revocations at the grant granularity are not yet supported. The rationale
 for not prioritizing these: full SSH certificate revocation is already supported
